@@ -19,16 +19,11 @@ var PI = Math.PI;
 var PI_DOUBLE = 2 * Math.PI;
 var PI_HALF = Math.PI / 2;
 
-const canvasDOMEl = document.querySelector("#canvas")
-const ctx = canvasDOMEl.getContext("2d")
-
-canvasDOMEl.setAttribute("height", 400);
-canvasDOMEl.setAttribute("width", 400);
-
 const playButtonDOMEL = document.querySelector("#container img")
 playButtonDOMEL.style.display = "block"
 
 playButtonDOMEL.onclick = function () {
+    document.querySelector("#play").src = "./music_pause_button.png"
     animation()
 }
 
@@ -41,19 +36,14 @@ function animation() {
     }, 500);
 }
 
-animation()
-
 function drawCircles(newSize) {
     function drawColors(colors, maxRadius, step) {
         colors.forEach((col, idx) => {
-            ctx.beginPath();
-            ctx.fillStyle = col
-            ctx.arc(0, 0, maxRadius - (idx * step), 0, PI_DOUBLE);
-            ctx.fill();
-            ctx.closePath();
+            document.querySelector(".c" + idx).style.width = `${maxRadius - (idx * step)}px`
+            document.querySelector(".c" + idx).style.height = `${maxRadius - (idx * step)}px`
+            document.querySelector(".c" + idx).style.backgroundColor = col
         })
     }
 
-    ctx.translate(w2, h2)
-    drawColors(["#2199ff", "#46aaff", "#79c2ff", "#b4ddff"], 80 * newSize, 40)
+    drawColors(["#2199ff", "#46aaff", "#79c2ff"], (180 * newSize), 40 + randomInt(0, 25))
 }

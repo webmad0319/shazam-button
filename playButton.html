@@ -160,13 +160,14 @@
             align-items: center;
         }
 
-        #container img {
+        #container #play {
             display: none;
             transition: transform 0.5s;
             width: 64px;
             height: 64px;
             position: relative;
             z-index: 10;
+            cursor: pointer;
         }
 
         #canvas {
@@ -175,14 +176,24 @@
             height: 400px;
             width: 400px;
         }
+
+        .circle {
+            border-radius: 50%;
+            position: absolute;
+            transition: all 0.5s;
+        }
     </style>
 </head>
 
 <body>
+    <img src="./music_pause_button.png" alt="" style="display: none;">
+
     <div id="wrapper">
         <div id='container'>
-            <img src="./music_play_button.png" alt="">
-            <canvas id="canvas"></canvas>
+            <img src="./music_play_button.png" alt="" id="play">
+            <div class="c0 circle"></div>
+            <div class="c1 circle"></div>
+            <div class="c2 circle"></div>
         </div>
     </div>
 
